@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-#Web servers are the piece of software generating and serving HTML pages!
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.html
-service nginx start
+#This installs Nginx on my web-01 server
+sudo apt-get update
+sudo apt-get install nginx -y
+sudo mkdir /var/www/html
+sudo touch /var/www/html/index.html
+sudo echo "Holberton School" > /var/www/html/index.html
+sudo service nginx start
