@@ -9,14 +9,14 @@ apt-get -y install haproxy
 # edit config file
 server_config=\
 "
-frontend  mugara_frontend
+frontend  chukwuonyejustice_frontend
         bind *:80
         mode http
-        default_backend mugara_backend
-backend mugara_backend
+        default_backend chukwuonyejustice_backend
+backend chukwuonyejustice_backend
         balance roundrobin
-        server 5785-web-01 54.91.104.124:80 check
-        server 5785-web-02 52.55.215.79:80 check
+        server 5783-web-01 34.207.185.176:80 check
+        server 5783-web-02 54.234.114.204:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
