@@ -13,6 +13,16 @@ frontend  mugara_frontend
         bind *:80
         mode http
         default_backend mugara_backend
-backend chukwuonyejustice_backend
+backend mugara_backend
         balance roundrobin
-        server 5785-web
+        server 5785-web-01 54.91.104.124:80 check
+        server 5785-web-02 52.55.215.79:80 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# enable haproxy to be started by init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+# Testing the HAproxy configuration file
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
